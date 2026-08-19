@@ -1,17 +1,73 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Download } from 'lucide-react';
 import { STUDIO_INFO, PRESS_ITEMS } from '@/lib/data';
 
-export const metadata = {
+const BASE_URL = 'https://shesayscut.com';
+
+export const metadata: Metadata = {
   title: 'About Maria Lückerath | She Says Cut',
   description:
-    'Maria Lückerath is an independent film director and founder of She Says Cut in Brussels, focusing on narrative cinema, documentary, and sensory storytelling.',
+    'Maria Lückerath is a film director and founder of She Says Cut in Brussels, focusing on narrative cinema, documentary essays, and sensory storytelling.',
+  alternates: {
+    canonical: `${BASE_URL}/about`,
+  },
+  openGraph: {
+    title: 'About Maria Lückerath | She Says Cut',
+    description:
+      'Maria Lückerath is a film director and founder of She Says Cut in Brussels, focusing on narrative cinema, documentary, and sensory storytelling.',
+    url: `${BASE_URL}/about`,
+    siteName: 'She Says Cut',
+    locale: 'en_US',
+    type: 'profile',
+    images: [
+      {
+        url: `${BASE_URL}/media/maria_portrait.jpg`,
+        width: 1200,
+        height: 1200,
+        alt: 'Maria Lückerath — Director, She Says Cut',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Maria Lückerath | She Says Cut',
+    description:
+      'Maria Lückerath is a film director and founder of She Says Cut in Brussels.',
+    images: [`${BASE_URL}/media/maria_portrait.jpg`],
+  },
 };
 
 export default function AboutPage() {
+  const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${BASE_URL}/#maria-luckerath`,
+    name: 'Maria Lückerath',
+    jobTitle: 'Film Director & Studio Founder',
+    worksFor: {
+      '@type': 'Organization',
+      '@id': `${BASE_URL}/#organization`,
+      name: 'She Says Cut',
+      url: BASE_URL,
+    },
+    url: `${BASE_URL}/about`,
+    image: `${BASE_URL}/media/maria_portrait.jpg`,
+    knowsAbout: [
+      'Narrative Cinema',
+      'Documentary Filmmaking',
+      'Sensory Storytelling',
+      'Analog Cinematography',
+    ],
+  };
+
   return (
     <div className="w-full min-h-screen bg-[#F5F4F0]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
 
       {/* ── HERO — name at large scale ────────────── */}
       <header className="max-w-[1600px] mx-auto px-6 sm:px-10 pt-24 sm:pt-28 pb-0 border-b border-black/10">
@@ -33,14 +89,14 @@ export default function AboutPage() {
       </header>
 
       {/* ── PORTRAIT + BIO ───────────────────────── */}
-      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-b border-black/10">
+      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-b border-black/10" aria-label="Director Biography">
 
         {/* Portrait */}
         <div className="lg:col-span-5">
           <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#EDECE8]">
             <Image
               src={STUDIO_INFO.directorPortrait}
-              alt="Maria Lückerath, Film Director, She Says Cut, Brussels"
+              alt="Maria Lückerath, Film Director and Founder of She Says Cut in Brussels"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 40vw"
@@ -85,8 +141,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── PRINCIPLES ───────────────────────────── */}
-      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20 border-b border-black/10">
-        <span className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#8A8A8A] block mb-10">Studio Principles</span>
+      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20 border-b border-black/10" aria-label="Studio Principles">
+        <h2 className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#8A8A8A] block mb-10">Studio Principles</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-black/10">
           {[
             { title: 'Analog & Tactile', body: 'We prioritise 35mm and 16mm film stocks, vintage optics, and physical texture to ground stories in tangible reality.' },
@@ -102,8 +158,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── PRESS ────────────────────────────────── */}
-      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <span className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#8A8A8A] block mb-8">Press & Editorial Coverage</span>
+      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20" aria-label="Press and Coverage">
+        <h2 className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#8A8A8A] block mb-8">Press & Editorial Coverage</h2>
         <div className="divide-y divide-black/8 border-y border-black/8">
           {PRESS_ITEMS.map(item => (
             <div key={item.id} className="py-7 flex flex-col sm:flex-row sm:items-start justify-between gap-4">

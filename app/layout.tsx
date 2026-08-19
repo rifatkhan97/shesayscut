@@ -17,13 +17,15 @@ const inter = Inter({
   display: 'swap',
 });
 
+const BASE_URL = 'https://shesayscut.com';
+
 export const metadata: Metadata = {
   title: {
     default: 'She Says Cut | Independent Film Studio | Brussels',
     template: '%s | She Says Cut',
   },
   description:
-    'Independent boutique film production company based in Brussels, Belgium, directed by Maria Lückerath. Introspective narrative cinema, documentary, sensory storytelling, and ethical commissioned film.',
+    'She Says Cut is an independent boutique film production studio based in Brussels, Belgium, directed by Maria Lückerath. Focusing on narrative cinema, documentary essays, sensory storytelling, and ethical commercial work.',
   keywords: [
     'She Says Cut',
     'Maria Lückerath',
@@ -34,23 +36,26 @@ export const metadata: Metadata = {
     'sensory cinema',
     'European film director',
   ],
-  authors: [{ name: 'Maria Lückerath', url: 'https://shesayscut.com' }],
+  authors: [{ name: 'Maria Lückerath', url: `${BASE_URL}/about` }],
   creator: 'She Says Cut',
-  metadataBase: new URL('https://shesayscut.com'),
+  metadataBase: new URL(BASE_URL),
+  alternates: {
+    canonical: './',
+  },
   openGraph: {
     title: 'She Says Cut | Independent Film Studio | Brussels',
     description:
-      'A boutique European film studio translating memory, sound dynamics, and physical presence into quiet digital experiences.',
-    url: 'https://shesayscut.com',
+      'Independent boutique film production studio in Brussels, Belgium, directed by Maria Lückerath. Introspective narrative cinema and sensory storytelling.',
+    url: BASE_URL,
     siteName: 'She Says Cut',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: '/media/myopia_hero.png',
+        url: `${BASE_URL}/media/myopia_hero.png`,
         width: 1200,
         height: 630,
-        alt: 'She Says Cut Cinema Still',
+        alt: 'She Says Cut Film Still',
       },
     ],
   },
@@ -58,8 +63,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'She Says Cut | Brussels Independent Cinema',
     description:
-      'Introspective narrative cinema, documentary, and sensory storytelling directed by Maria Lückerath.',
-    images: ['/media/myopia_hero.png'],
+      'Introspective narrative cinema, documentary, and sensory storytelling directed by Maria Lückerath in Brussels.',
+    images: [`${BASE_URL}/media/myopia_hero.png`],
   },
   robots: {
     index: true,
@@ -80,15 +85,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
+  const organizationJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'ProductionCompany',
+    '@type': 'Organization',
+    '@id': `${BASE_URL}/#organization`,
     name: 'She Says Cut',
-    legalName: 'She Says Cut Studio',
-    url: 'https://shesayscut.com',
-    logo: 'https://shesayscut.com/media/myopia_hero.png',
+    url: BASE_URL,
     description:
-      'Independent boutique film production company based in Brussels, Belgium, directed by Maria Lückerath.',
+      'Independent boutique film production studio based in Brussels, Belgium, directed by Maria Lückerath.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Brussels',
@@ -96,14 +100,16 @@ export default function RootLayout({
     },
     founder: {
       '@type': 'Person',
+      '@id': `${BASE_URL}/#maria-luckerath`,
       name: 'Maria Lückerath',
-      jobTitle: 'Film Director & Creative Voice',
+      jobTitle: 'Film Director',
+      url: `${BASE_URL}/about`,
     },
     knowsAbout: [
       'Narrative Cinema',
       'Documentary Filmmaking',
       'Sensory Storytelling',
-      'Sound Design & Visual Essays',
+      'Visual Essays',
     ],
   };
 
@@ -115,12 +121,12 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col justify-between">
         <Navigation />
-        <main className="flex-1 w-full">
+        <main className="flex-1 w-full" id="main-content">
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />

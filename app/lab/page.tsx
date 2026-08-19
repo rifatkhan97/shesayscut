@@ -1,10 +1,31 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { LAB_PROJECTS } from '@/lib/data';
 
-export const metadata = {
-  title: 'Lab — She Says Cut',
-  description: 'Experimental research space: hydrophone acoustics, 35mm emulsion studies, foley archives, and visual essays by She Says Cut.',
+const BASE_URL = 'https://shesayscut.com';
+
+export const metadata: Metadata = {
+  title: 'Experimental Film Lab & Sound Research | She Says Cut',
+  description:
+    'Experimental research space of She Says Cut: hydrophone acoustics, 35mm emulsion studies, foley archives, and visual essays by Maria Lückerath.',
+  alternates: {
+    canonical: `${BASE_URL}/lab`,
+  },
+  openGraph: {
+    title: 'Experimental Film Lab & Sound Research | She Says Cut',
+    description:
+      'Hydrophone acoustics, 35mm emulsion studies, foley archives, and visual essays by She Says Cut in Brussels.',
+    url: `${BASE_URL}/lab`,
+    siteName: 'She Says Cut',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Experimental Film Lab & Sound Research | She Says Cut',
+    description:
+      'Hydrophone acoustics, 35mm emulsion studies, foley archives, and visual essays by She Says Cut.',
+  },
 };
 
 export default function LabPage() {
@@ -40,47 +61,50 @@ export default function LabPage() {
         </blockquote>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {LAB_PROJECTS.map((p, i) => (
-            <article key={p.id} className="group flex flex-col gap-4">
-              {/* Media */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#EDECE8]">
-                <Image
-                  src={p.mediaUrl}
-                  alt={p.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-                />
-                {/* Category badge */}
-                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 font-sans text-[9px] tracking-[0.18em] uppercase text-[#0A0A0A]">
-                  {p.category}
+        <section aria-label="Research Experiments and Visual Essays">
+          <h2 className="sr-only">Research Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {LAB_PROJECTS.map((p) => (
+              <article key={p.id} className="group flex flex-col gap-4">
+                {/* Media */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#EDECE8]">
+                  <Image
+                    src={p.mediaUrl}
+                    alt={`${p.title} — ${p.category}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                  />
+                  {/* Category badge */}
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 font-sans text-[9px] tracking-[0.18em] uppercase text-[#0A0A0A]">
+                    {p.category}
+                  </div>
                 </div>
-              </div>
 
-              {/* Meta */}
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between font-sans text-[9px] tracking-[0.18em] uppercase text-[#8A8A8A]">
-                  <span>Research Note</span>
-                  <span>{p.year}</span>
-                </div>
-                <h3 className="font-sans font-black text-lg text-[#0A0A0A] leading-tight">{p.title}</h3>
-                <p className="font-sans text-xs text-[#8A8A8A] leading-relaxed">{p.description}</p>
+                {/* Meta */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between font-sans text-[9px] tracking-[0.18em] uppercase text-[#8A8A8A]">
+                    <span>Research Note</span>
+                    <span>{p.year}</span>
+                  </div>
+                  <h3 className="font-sans font-black text-lg text-[#0A0A0A] leading-tight">{p.title}</h3>
+                  <p className="font-sans text-xs text-[#8A8A8A] leading-relaxed">{p.description}</p>
 
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {p.tags.map(tag => (
-                    <span key={tag} className="font-sans text-[9px] text-[#8A8A8A] bg-[#EDECE8] px-2 py-0.5">
-                      #{tag}
-                    </span>
-                  ))}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {p.tags.map(tag => (
+                      <span key={tag} className="font-sans text-[9px] text-[#8A8A8A] bg-[#EDECE8] px-2 py-0.5">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                  {p.isPlaceholder && (
+                    <span className="font-sans text-[9px] text-[#8A8A8A]/50">* Research log placeholder</span>
+                  )}
                 </div>
-                {p.isPlaceholder && (
-                  <span className="font-sans text-[9px] text-[#8A8A8A]/50">* Research log placeholder</span>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

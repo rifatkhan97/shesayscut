@@ -42,8 +42,6 @@ export const FILMS: Film[] = [
     credits: [
       { role: 'Written & Directed by', name: 'Maria Lückerath' },
       { role: 'Production Company', name: 'She Says Cut' },
-      { role: 'Cinematography', name: 'Placeholder Cinematographer' },
-      { role: 'Sound Design & Composition', name: 'Placeholder Sound Artist' },
     ],
     stills: [
       { id: 's1', url: 'https://img.youtube.com/vi/szQqFi1DjQ4/hqdefault.jpg', alt: 'Je Cours frame · Night street runner', caption: 'Frame 0102 · Night street sequence', aspectRatio: '16:9' },
@@ -71,9 +69,6 @@ export const FILMS: Film[] = [
     aspectRatio: '2.39:1',
     credits: [
       { role: 'Written & Directed by', name: 'Maria Lückerath' },
-      { role: 'Director of Photography', name: 'Placeholder Cinematographer' },
-      { role: 'Editor', name: 'Placeholder Editor' },
-      { role: 'Sound Design & Composition', name: 'Placeholder Sound Artist' },
       { role: 'Production Company', name: 'She Says Cut (Brussels)' },
     ],
     stills: [
@@ -103,9 +98,6 @@ export const FILMS: Film[] = [
     aspectRatio: '16:9',
     credits: [
       { role: 'Directed by', name: 'Maria Lückerath' },
-      { role: 'Cinematography', name: 'Placeholder Cinematographer' },
-      { role: 'Field Recording & Sound Mix', name: 'Placeholder Sound Designer' },
-      { role: 'Colorist', name: 'Placeholder Colorist' },
       { role: 'Production Studio', name: 'She Says Cut' },
     ],
     stills: [
@@ -119,23 +111,21 @@ export const FILMS: Film[] = [
     title: 'Irreversible',
     subtitle: 'A sensory poem on water memory and nocturnal soundscapes',
     year: '2022',
-    category: 'Sensory Cinema',
-    format: 'Digital / Vintage Lenses',
+    category: 'Sensory Essay',
+    format: 'Super 8 / Hydrophone Audio',
     duration: '14 mins',
     director: 'Maria Lückerath',
-    logline: 'An experimental audio-visual study of fluid dynamics and sub-surface resonance along the Senne basin.',
-    synopsis: 'Irreversible sits at the intersection of sound design and visual essay. Through underwater hydrophone recordings and high-speed macroscopic lens studies, the film captures the hidden acoustic frequencies of urban waterways, creating an immersive, hypnotic sensory voyage.',
-    directorStatement: 'Water holds no permanent shape, yet retains acoustic trace memories of everything it touches. Irreversible was engineered as a purely sensory piece, best experienced in a darkened space with immersive audio monitoring.',
-    vimeoId: '13636750',
+    logline: 'Hydrophone recordings captured beneath the Senne river intertwine with Super 8 reflections of Brussels at dusk.',
+    synopsis: 'Irreversible is an acoustic and optical study of urban water dynamics. Combining underwater hydrophone audio with grainy Super 8 mm imagery, the film meditates on impermanence, industrial heritage, and the subterranean memory of rivers buried beneath modern cities.',
+    directorStatement: 'With Irreversible, we listened before we filmed. Sound guided the edit.',
+    vimeoId: '76979871',
     youtubeId: 'eRsGyueVLvQ',
     heroImage: UNSPLASH.water,
     thumbnail: UNSPLASH.water,
     aspectRatio: '2.39:1',
     credits: [
       { role: 'Concept & Direction', name: 'Maria Lückerath' },
-      { role: 'Hydrophone Audio & Composition', name: 'Placeholder Sound Artist' },
-      { role: 'Macro Camera Operator', name: 'Placeholder Camera Operator' },
-      { role: 'Production', name: 'She Says Cut' },
+      { role: 'Production Studio', name: 'She Says Cut' },
     ],
     stills: [
       { id: 's1', url: UNSPLASH.water,  alt: 'Dark water reflections at dusk',      caption: 'Frame 0105 · Dusk reflections on Senne', aspectRatio: '2.39:1' },
