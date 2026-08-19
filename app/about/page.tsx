@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Download } from 'lucide-react';
 import { STUDIO_INFO, PRESS_ITEMS } from '@/lib/data';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: 'About Maria Lückerath | She Says Cut',

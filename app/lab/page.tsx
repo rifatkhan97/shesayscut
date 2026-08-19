@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { LAB_PROJECTS } from '@/lib/data';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: 'Experimental Film Lab & Sound Research | She Says Cut',

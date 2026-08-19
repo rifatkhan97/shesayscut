@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import CinemaClient from './CinemaClient';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: 'Cinema Archive | Films by She Says Cut',

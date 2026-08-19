@@ -7,7 +7,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export async function generateStaticParams() {
   return FILMS.map((film) => ({

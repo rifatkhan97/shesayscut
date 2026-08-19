@@ -17,7 +17,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: {

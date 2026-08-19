@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import CommissionsClient from './CommissionsClient';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: 'Commercial & Branded Film Commissions | She Says Cut',

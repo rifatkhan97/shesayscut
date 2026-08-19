@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import HomePageClient from './HomePageClient';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: 'She Says Cut | Independent Film Production in Brussels',

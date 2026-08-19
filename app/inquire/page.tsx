@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import InquireClient from './InquireClient';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export const metadata: Metadata = {
   title: 'Inquire & Festival Screener Access | She Says Cut',

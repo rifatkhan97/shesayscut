@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { FILMS } from '@/lib/data';
 
-const BASE_URL = 'https://shesayscut.com';
+const BASE_URL = 'https://www.shesayscut.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
