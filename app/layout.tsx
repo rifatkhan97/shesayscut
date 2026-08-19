@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${BASE_URL}/media/myopia_hero.png`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: 'She Says Cut Film Still',
+        alt: 'She Says Cut — Independent Film Studio — Brussels, Belgium',
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: 'She Says Cut | Brussels Independent Cinema',
     description:
       'Introspective narrative cinema, documentary, and sensory storytelling directed by Maria Lückerath in Brussels.',
-    images: [`${BASE_URL}/media/myopia_hero.png`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
   robots: {
     index: true,

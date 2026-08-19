@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${BASE_URL}/media/myopia_hero.png`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: 'She Says Cut Film Production Studio Brussels',
+        alt: 'She Says Cut — Independent Film Studio — Brussels, Belgium',
       },
     ],
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'She Says Cut | Independent Film Production in Brussels',
     description:
       'Independent boutique film production studio in Brussels, Belgium, directed by Maria Lückerath.',
-    images: [`${BASE_URL}/media/myopia_hero.png`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
 };
 

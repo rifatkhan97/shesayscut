@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${BASE_URL}/media/myopia_hero.png`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: 'She Says Cut Cinema Archive',
+        alt: 'She Says Cut — Cinema Archive',
       },
     ],
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'Cinema Archive | Films by She Says Cut',
     description:
       'Introspective narrative cinema, documentary shorts, and sensory soundscapes directed by Maria Lückerath.',
-    images: [`${BASE_URL}/media/myopia_hero.png`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
 };
 
