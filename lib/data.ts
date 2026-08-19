@@ -111,7 +111,7 @@ export const FILMS: Film[] = [
     title: 'Irreversible',
     subtitle: 'A sensory poem on water memory and nocturnal soundscapes',
     year: '2022',
-    category: 'Sensory Essay',
+    category: 'Sensory Cinema',
     format: 'Super 8 / Hydrophone Audio',
     duration: '14 mins',
     director: 'Maria Lückerath',
