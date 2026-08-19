@@ -1,0 +1,255 @@
+import { Film, Commission, LabProject, PressItem } from './types';
+
+// Unsplash copyright-free image URLs (Unsplash License — free for commercial and non-commercial use)
+const UNSPLASH = {
+  // Moody European street / city at night
+  street:    'https://images.unsplash.com/photo-1500622944204-b135684e99fd?w=2400&q=80&auto=format&fit=crop',
+  // Dark cinematic window / interior
+  window:    'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=2400&q=80&auto=format&fit=crop',
+  // Craftsman hands / pencil / workshop
+  pencil:    'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=2400&q=80&auto=format&fit=crop',
+  // Water reflection / rippling surface
+  water:     'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=2400&q=80&auto=format&fit=crop',
+  // Dramatic female portrait in low light
+  portrait:  'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=1200&q=80&auto=format&fit=crop',
+  // Film set / production behind the scenes
+  filmset:   'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=2400&q=80&auto=format&fit=crop',
+  // Abstract urban architecture / brutalist
+  arch:      'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=2400&q=80&auto=format&fit=crop',
+  // Analog camera / film reel close up
+  film:      'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=2400&q=80&auto=format&fit=crop',
+  // Dark moody landscape / dusk
+  dusk:      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=2400&q=80&auto=format&fit=crop',
+};
+
+export const FILMS: Film[] = [
+  {
+    slug: 'je-cours',
+    title: 'Je Cours',
+    subtitle: 'A kinetic short film on endurance, rhythm, and solitary motion',
+    year: '2024',
+    category: 'Narrative Short',
+    format: '16mm / Digital Anamorphic',
+    duration: '12 mins',
+    director: 'Maria Lückerath',
+    logline: 'Through nocturnal streets and rain-soaked tracks, a runner moves through isolation, seeking freedom in cadence.',
+    synopsis: 'Je Cours ("I Run") is an intimate narrative short film directed by Maria Lückerath for She Says Cut. Set against the quiet nocturnal landscape of Brussels, the film explores breath, physical endurance, and internal velocity as a solitary runner navigates the city.',
+    directorStatement: 'Je Cours began with a simple physical rhythm: breath against pavement. We wanted the movement of the runner and the movement of the camera to sync into a single heartbeat.',
+    youtubeId: 'szQqFi1DjQ4',
+    heroImage: 'https://img.youtube.com/vi/szQqFi1DjQ4/hqdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/szQqFi1DjQ4/hqdefault.jpg',
+    aspectRatio: '16:9',
+    credits: [
+      { role: 'Written & Directed by', name: 'Maria Lückerath' },
+      { role: 'Production Company', name: 'She Says Cut' },
+      { role: 'Cinematography', name: 'Placeholder Cinematographer' },
+      { role: 'Sound Design & Composition', name: 'Placeholder Sound Artist' },
+    ],
+    stills: [
+      { id: 's1', url: 'https://img.youtube.com/vi/szQqFi1DjQ4/hqdefault.jpg', alt: 'Je Cours frame · Night street runner', caption: 'Frame 0102 · Night street sequence', aspectRatio: '16:9' },
+      { id: 's2', url: UNSPLASH.street, alt: 'Rain-soaked track Brussels', caption: 'Frame 0480 · Rain reflection study', aspectRatio: '16:9' },
+    ],
+    selectedPress: ['Official Short Film Release: She Says Cut (Brussels)'],
+    screeningNotes: 'Available on YouTube and official festival screeners upon request.',
+  },
+  {
+    slug: 'myopia',
+    title: 'MyOPIA',
+    subtitle: 'A journey through filtered light and unspoken distance',
+    year: '2024',
+    category: 'Narrative Short',
+    format: '35mm Anamorphic',
+    duration: '18 mins',
+    director: 'Maria Lückerath',
+    logline: 'In the quiet rain of late November in Brussels, a lens technician begins noticing patterns of shadow that alter her perception of memory.',
+    synopsis: 'Set against the brutalist architecture and mist-shrouded avenues of Brussels, MyOPIA explores visual intimacy and isolation. When Clara, a master lens grinder, comes across an unlabelled optic prescription from 1974, she embarks on a silent nocturnal search across the city, questioning whether we truly observe the world or merely project our own longings onto it.',
+    directorStatement: 'MyOPIA was born from a desire to strip narrative down to gaze and cadence. We wanted the camera to feel like an eye adjusting to darkness, attuned to physical texture, glass reflections, and the weight of silence. Film is first and foremost a tactile medium, and with MyOPIA we sought to create an experience where sound and light operate as equal storytellers.',
+    vimeoId: '48594247',
+    youtubeId: 'r6Ji5-N905E',
+    heroImage: UNSPLASH.window,
+    thumbnail: UNSPLASH.window,
+    aspectRatio: '2.39:1',
+    credits: [
+      { role: 'Written & Directed by', name: 'Maria Lückerath' },
+      { role: 'Director of Photography', name: 'Placeholder Cinematographer' },
+      { role: 'Editor', name: 'Placeholder Editor' },
+      { role: 'Sound Design & Composition', name: 'Placeholder Sound Artist' },
+      { role: 'Production Company', name: 'She Says Cut (Brussels)' },
+    ],
+    stills: [
+      { id: 's1', url: UNSPLASH.street,  alt: 'Night exterior canal district Brussels', caption: 'Frame 0412 · Night exterior, Canal district', aspectRatio: '2.39:1' },
+      { id: 's2', url: UNSPLASH.window,  alt: 'Low key interior shadow study',           caption: 'Frame 0890 · Clara in lens studio',        aspectRatio: '2.39:1' },
+      { id: 's3', url: UNSPLASH.film,    alt: 'Close-up of 35mm optical elements',       caption: 'Frame 1204 · Anamorphic glass detail',     aspectRatio: '16:9'   },
+    ],
+    selectedPress: ['Official Selection: Brussels International Film Festival (Placeholder)'],
+    screeningNotes: 'Private screener available upon request for programmers, curators, and press.',
+  },
+  {
+    slug: 'the-last-pencil',
+    title: 'The Last Pencil',
+    subtitle: 'An artisanal tribute to memory, cedar, and graphite',
+    year: '2023',
+    category: 'Documentary',
+    format: '16mm Color',
+    duration: '24 mins',
+    director: 'Maria Lückerath',
+    logline: "A portrait of one of Europe\u2019s last hand-carved cedar pencil workshops as it prepares its final batch of graphite leads.",
+    synopsis: 'Filmed over three seasons in a quiet atelier, The Last Pencil documents the tactile rhythm of raw wood, cedar shavings, and graphite powder. The film captures an elder artisan whose hands carry generations of unwritten stories, offering a meditative contemplation on craft, time, and digital obsolescence.',
+    directorStatement: 'In documentary filmmaking, patience is our chief tool. We chose 16mm stock to honor the physical grain of the workshop. Every creak of the wooden floorboards, every drag of graphite across paper was treated as a musical movement.',
+    vimeoId: '328754668',
+    youtubeId: 'WhWc3b3K3dY',
+    heroImage: UNSPLASH.pencil,
+    thumbnail: UNSPLASH.pencil,
+    aspectRatio: '16:9',
+    credits: [
+      { role: 'Directed by', name: 'Maria Lückerath' },
+      { role: 'Cinematography', name: 'Placeholder Cinematographer' },
+      { role: 'Field Recording & Sound Mix', name: 'Placeholder Sound Designer' },
+      { role: 'Colorist', name: 'Placeholder Colorist' },
+      { role: 'Production Studio', name: 'She Says Cut' },
+    ],
+    stills: [
+      { id: 's1', url: UNSPLASH.pencil, alt: 'Cedar shavings under morning light', caption: 'Frame 0210 · Cedar shavings', aspectRatio: '16:9' },
+      { id: 's2', url: UNSPLASH.film,   alt: 'Craftsman tools on workbench',       caption: 'Frame 0640 · Tactile carving', aspectRatio: '16:9' },
+    ],
+    screeningNotes: 'Available for educational and cultural screenings upon inquiry.',
+  },
+  {
+    slug: 'irreversible',
+    title: 'Irreversible',
+    subtitle: 'A sensory poem on water memory and nocturnal soundscapes',
+    year: '2022',
+    category: 'Sensory Cinema',
+    format: 'Digital / Vintage Lenses',
+    duration: '14 mins',
+    director: 'Maria Lückerath',
+    logline: 'An experimental audio-visual study of fluid dynamics and sub-surface resonance along the Senne basin.',
+    synopsis: 'Irreversible sits at the intersection of sound design and visual essay. Through underwater hydrophone recordings and high-speed macroscopic lens studies, the film captures the hidden acoustic frequencies of urban waterways, creating an immersive, hypnotic sensory voyage.',
+    directorStatement: 'Water holds no permanent shape, yet retains acoustic trace memories of everything it touches. Irreversible was engineered as a purely sensory piece, best experienced in a darkened space with immersive audio monitoring.',
+    vimeoId: '13636750',
+    youtubeId: 'eRsGyueVLvQ',
+    heroImage: UNSPLASH.water,
+    thumbnail: UNSPLASH.water,
+    aspectRatio: '2.39:1',
+    credits: [
+      { role: 'Concept & Direction', name: 'Maria Lückerath' },
+      { role: 'Hydrophone Audio & Composition', name: 'Placeholder Sound Artist' },
+      { role: 'Macro Camera Operator', name: 'Placeholder Camera Operator' },
+      { role: 'Production', name: 'She Says Cut' },
+    ],
+    stills: [
+      { id: 's1', url: UNSPLASH.water,  alt: 'Dark water reflections at dusk',      caption: 'Frame 0105 · Dusk reflections on Senne', aspectRatio: '2.39:1' },
+      { id: 's2', url: UNSPLASH.street, alt: 'Urban waterway canal night reflection', caption: 'Frame 0382 · Canal surface study',         aspectRatio: '2.39:1' },
+    ],
+    screeningNotes: 'Full spatial audio mix available for museum and gallery installations.',
+  },
+];
+
+export const COMMISSIONS: Commission[] = [
+  {
+    id: 'comm-1',
+    client: '[Placeholder: Brand / Client Name]',
+    title: 'Architectural Resonance',
+    year: '2024',
+    service: 'Branded Film & Spatial Storytelling',
+    description: 'A sensory commission exploring minimalist space, natural light, and structural rhythm for a contemporary design house.',
+    thumbnail: UNSPLASH.arch,
+    heroImage: UNSPLASH.arch,
+    vimeoId: '76979871',
+    isPlaceholder: true,
+  },
+  {
+    id: 'comm-2',
+    client: '[Placeholder: Cultural Institution]',
+    title: 'The Silent Craft',
+    year: '2023',
+    service: 'Documentary Commission',
+    description: 'Short film documenting heritage techniques and sustainable material research in Northern Europe.',
+    thumbnail: UNSPLASH.pencil,
+    heroImage: UNSPLASH.pencil,
+    vimeoId: '226053498',
+    isPlaceholder: true,
+  },
+  {
+    id: 'comm-3',
+    client: '[Placeholder: Fashion / Editorial]',
+    title: 'Nocturne in Motion',
+    year: '2023',
+    service: 'Visual Essay & Film Direction',
+    description: 'Atmospheric video campaign shot on vintage anamorphic glass in nocturnal urban landscapes.',
+    thumbnail: UNSPLASH.filmset,
+    heroImage: UNSPLASH.filmset,
+    vimeoId: '148751763',
+    isPlaceholder: true,
+  },
+];
+
+export const LAB_PROJECTS: LabProject[] = [
+  {
+    id: 'lab-1',
+    title: 'Hydrophone Acoustics Vol. I',
+    category: 'Sound Design',
+    year: '2024',
+    description: 'Experimental recordings of sub-surface resonances captured in canal locks across Belgium.',
+    mediaUrl: UNSPLASH.water,
+    mediaType: 'image',
+    tags: ['Soundscape', 'Field Recording', 'Hydrophone'],
+    isPlaceholder: true,
+  },
+  {
+    id: 'lab-2',
+    title: 'On Grain and Light Leakage',
+    category: 'Visual Essay',
+    year: '2024',
+    description: 'A study analysing physical reaction of expired 35mm film stock exposed under sodium vapour streetlights.',
+    mediaUrl: UNSPLASH.film,
+    mediaType: 'image',
+    tags: ['35mm Film', 'Emulsion Research', 'Cinematography'],
+    isPlaceholder: true,
+  },
+  {
+    id: 'lab-3',
+    title: 'Atelier Sound Studies',
+    category: 'Short-Form',
+    year: '2023',
+    description: 'Micro-documentary vignettes focusing on mechanical click, wood friction, and paper grain.',
+    mediaUrl: UNSPLASH.pencil,
+    mediaType: 'image',
+    tags: ['Foley', 'Artisanal Sound', 'Micro-cinema'],
+    isPlaceholder: true,
+  },
+];
+
+export const PRESS_ITEMS: PressItem[] = [
+  {
+    id: 'press-1',
+    publication: '[Placeholder: Cinema Publication]',
+    title: 'Intimacy and Distance in Belgian Independent Cinema',
+    year: '2024',
+    excerpt: "An editorial feature on Maria Lückerath’s sensory filmmaking approach and sound design philosophy.",
+    isPlaceholder: true,
+  },
+  {
+    id: 'press-2',
+    publication: '[Placeholder: Documentary Journal]',
+    title: 'The Tactile Image: Retaining Craft in the Digital Era',
+    year: '2023',
+    excerpt: 'Analysis of The Last Pencil and the revival of analog storytelling in contemporary shorts.',
+    isPlaceholder: true,
+  },
+];
+
+export const STUDIO_INFO = {
+  name: 'She Says Cut',
+  tagline: 'Independent boutique film production company',
+  location: 'Brussels, Belgium',
+  director: 'Maria Lückerath',
+  directorPortrait: UNSPLASH.portrait,
+  email: 'contact@shesayscut.com',
+  heroImage: UNSPLASH.street,
+  manifesto: [
+    'We believe cinema is an act of listening before it is an act of framing.',
+    'Our work exists in the quiet spaces between spoken dialogue, where texture, acoustic resonance, and light reveal what words cannot.',
+    'Based in Brussels, She Says Cut approaches both narrative film and commissioned work with unwavering respect for sensory detail, ethical collaboration, and artistic discipline.',
+  ],
+};
