@@ -110,12 +110,10 @@ export default function Navigation() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className={`md:hidden font-sans text-[11px] tracking-[0.18em] uppercase focus:outline-none transition-colors px-3 py-1.5 border ${
-              mobileOpen
-                ? 'text-white border-white/40 bg-white/10'
-                : isDarkHeaderState
-                  ? 'text-[#0A0A0A] border-black/20'
-                  : 'text-white border-white/30'
+            className={`md:hidden font-sans text-[11px] tracking-[0.18em] uppercase focus:outline-none transition-opacity py-1 ${
+              mobileOpen || !isDarkHeaderState
+                ? 'text-white hover:opacity-60'
+                : 'text-[#0A0A0A] hover:opacity-60'
             }`}
           >
             {mobileOpen ? 'Close' : 'Menu'}
