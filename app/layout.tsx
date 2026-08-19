@@ -112,6 +112,11 @@ export default function RootLayout({
       'Sensory Storytelling',
       'Visual Essays',
     ],
+    sameAs: [
+      'https://www.instagram.com/shesayscut',
+      'https://www.youtube.com/@SheSaysCut_Film',
+      'https://www.tiktok.com/@shesayscut',
+    ],
   };
 
   return (

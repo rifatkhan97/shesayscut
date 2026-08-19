@@ -1,4 +1,4 @@
-import { Film, Commission, LabProject, PressItem } from './types';
+import { Film, Commission, LabProject, PressItem, SocialLink } from './types';
 
 // Unsplash copyright-free image URLs (Unsplash License — free for commercial and non-commercial use)
 const UNSPLASH = {
@@ -243,3 +243,21 @@ export const STUDIO_INFO = {
     'Based in Brussels, She Says Cut approaches both narrative film and commissioned work with unwavering respect for sensory detail, ethical collaboration, and artistic discipline.',
   ],
 };
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/shesayscut',
+    ariaLabel: 'Follow She Says Cut on Instagram',
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@SheSaysCut_Film',
+    ariaLabel: 'Watch She Says Cut on YouTube',
+  },
+  {
+    name: 'TikTok',
+    url: 'https://www.tiktok.com/@shesayscut',
+    ariaLabel: 'Follow She Says Cut on TikTok',
+  },
+];

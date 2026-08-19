@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Download } from 'lucide-react';
 import { STUDIO_INFO, PRESS_ITEMS } from '@/lib/data';
+import SocialLinks from '@/components/SocialLinks';
 
 const BASE_URL = 'https://www.shesayscut.com';
 
@@ -158,7 +159,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── PRESS ────────────────────────────────── */}
-      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20" aria-label="Press and Coverage">
+      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20 border-b border-black/10" aria-label="Press and Coverage">
         <h2 className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#8A8A8A] block mb-8">Press & Editorial Coverage</h2>
         <div className="divide-y divide-black/8 border-y border-black/8">
           {PRESS_ITEMS.map(item => (
@@ -176,6 +177,12 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ── FOLLOW THE WORK ───────────────────────── */}
+      <section className="max-w-[1600px] mx-auto px-6 sm:px-10 py-16 sm:py-20" aria-label="Official Social Channels">
+        <h2 className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#8A8A8A] block mb-6">Follow the work</h2>
+        <SocialLinks layout="row" linkClassName="text-sm font-semibold text-[#0A0A0A] hover:opacity-50" />
       </section>
     </div>
   );

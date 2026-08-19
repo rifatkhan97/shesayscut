@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import InquiryForm from '@/components/InquiryForm';
 import ScreenerRequestForm from '@/components/ScreenerRequestForm';
+import SocialLinks from '@/components/SocialLinks';
 
 export default function InquireClient() {
   const [tab, setTab] = useState<'commission' | 'screener'>('commission');
@@ -89,6 +90,11 @@ export default function InquireClient() {
             <p className="font-sans text-[10px] text-[#8A8A8A] mt-3 leading-relaxed">
               * Screener requests are subject to festival or publication credential verification.
             </p>
+          </div>
+
+          <div className="border-t border-black/10 pt-6">
+            <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#8A8A8A] mb-2.5">Follow She Says Cut</p>
+            <SocialLinks layout="row" linkClassName="text-xs text-[#0A0A0A] font-medium hover:opacity-50" />
           </div>
         </aside>
       </div>

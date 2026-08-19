@@ -71,3 +71,10 @@ export interface PressItem {
   url?: string;
   isPlaceholder?: boolean;
 }
+
+export interface SocialLink {
+  name: string;
+  url: string;
+  ariaLabel: string;
+}
+

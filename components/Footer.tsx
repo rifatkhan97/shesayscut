@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import SocialLinks from './SocialLinks';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -16,7 +17,7 @@ export default function Footer() {
         </div>
 
         {/* Middle grid */}
-        <div className="py-12 grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 border-b border-black/10">
+        <div className="py-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 lg:gap-10 border-b border-black/10">
           <div>
             <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#8A8A8A] mb-4">Work</p>
             <ul className="flex flex-col gap-2.5 font-sans text-sm text-[#3A3A3A]">
@@ -34,13 +35,17 @@ export default function Footer() {
             </ul>
           </div>
           <div>
+            <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#8A8A8A] mb-4">Social</p>
+            <SocialLinks linkClassName="text-sm font-normal text-[#3A3A3A] hover:text-[#0A0A0A] normal-case tracking-normal" />
+          </div>
+          <div>
             <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#8A8A8A] mb-4">Location</p>
             <address className="not-italic font-sans text-sm text-[#3A3A3A] flex flex-col gap-1">
               <span className="font-semibold text-[#0A0A0A]">Brussels, Belgium</span>
               <span>European Commissions Welcome</span>
             </address>
           </div>
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-[#8A8A8A] mb-4">Contact</p>
             <p className="font-sans text-sm text-[#3A3A3A]">
               <a href="mailto:contact@shesayscut.com" className="hover:text-[#0A0A0A] transition-colors underline underline-offset-4">
