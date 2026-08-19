@@ -236,7 +236,7 @@ export const STUDIO_INFO = {
   director: 'Maria Lückerath',
   directorPortrait: '/media/maria_portrait.jpg',
   email: 'contact@shesayscut.com',
-  heroImage: UNSPLASH.street,
+  heroImage: '/media/hero_rain_street.jpg',
   manifesto: [
     'We believe cinema is an act of listening before it is an act of framing.',
     'Our work exists in the quiet spaces between spoken dialogue, where texture, acoustic resonance, and light reveal what words cannot.',
