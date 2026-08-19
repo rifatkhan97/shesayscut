@@ -14,8 +14,8 @@ const NAV_LINKS = [
 ];
 
 export default function Navigation() {
-  const [scrolled, setScrolled]         = useState(false);
-  const [mobileOpen, setMobileOpen]     = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   // Detect scroll
@@ -25,27 +25,33 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock scroll when mobile menu open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  // Close on route change
+  // Close menu on route change
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const isHeroPage = pathname === '/';
+  
+  // Header text color logic
+  // On mobile menu open: text is always crisp white over dark menu overlay
+  const isDarkHeaderState = !mobileOpen && (scrolled || !isHeroPage);
 
   return (
     <>
       {/* ─── Fixed header ─────────────────────────────────── */}
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${
-          scrolled
-            ? 'bg-[#F5F4F0]/90 backdrop-blur-md border-b border-black/8 py-4'
-            : isHeroPage
-              ? 'bg-transparent py-6 lg:py-8'
-              : 'bg-[#F5F4F0]/90 backdrop-blur-md border-b border-black/8 py-5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+          mobileOpen
+            ? 'bg-transparent py-6'
+            : scrolled
+              ? 'bg-[#F5F4F0]/92 backdrop-blur-md border-b border-black/8 py-4'
+              : isHeroPage
+                ? 'bg-transparent py-6 lg:py-8'
+                : 'bg-[#F5F4F0]/92 backdrop-blur-md border-b border-black/8 py-5'
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 sm:px-10 flex items-center justify-between">
@@ -58,14 +64,14 @@ export default function Navigation() {
           >
             <span
               className={`font-sans font-black text-base sm:text-lg tracking-tight transition-colors duration-300 ${
-                scrolled || !isHeroPage ? 'text-[#0A0A0A]' : 'text-white'
+                isDarkHeaderState ? 'text-[#0A0A0A]' : 'text-white'
               } group-hover:opacity-70`}
             >
               SHE SAYS CUT
             </span>
             <span
               className={`font-sans text-[9px] tracking-[0.22em] uppercase mt-0.5 transition-colors duration-300 ${
-                scrolled || !isHeroPage ? 'text-[#8A8A8A]' : 'text-white/60'
+                isDarkHeaderState ? 'text-[#8A8A8A]' : 'text-white/70'
               }`}
             >
               Brussels · Film Studio
@@ -82,15 +88,15 @@ export default function Navigation() {
                   href={href}
                   className={`font-sans text-[11px] tracking-[0.18em] uppercase transition-all duration-200 relative py-1 ${
                     active
-                      ? (scrolled || !isHeroPage ? 'text-[#0A0A0A]' : 'text-white')
-                      : (scrolled || !isHeroPage ? 'text-[#8A8A8A] hover:text-[#0A0A0A]' : 'text-white/60 hover:text-white')
+                      ? (isDarkHeaderState ? 'text-[#0A0A0A]' : 'text-white')
+                      : (isDarkHeaderState ? 'text-[#8A8A8A] hover:text-[#0A0A0A]' : 'text-white/70 hover:text-white')
                   }`}
                 >
                   {label}
                   {active && (
                     <motion.span
                       layoutId="navUnderline"
-                      className={`absolute bottom-0 left-0 right-0 h-px ${scrolled || !isHeroPage ? 'bg-[#0A0A0A]' : 'bg-white'}`}
+                      className={`absolute bottom-0 left-0 right-0 h-px ${isDarkHeaderState ? 'bg-[#0A0A0A]' : 'bg-white'}`}
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -99,13 +105,17 @@ export default function Navigation() {
             })}
           </nav>
 
-          {/* Mobile trigger */}
+          {/* Mobile trigger button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className={`md:hidden font-sans text-[11px] tracking-[0.18em] uppercase focus:outline-none transition-colors ${
-              scrolled || !isHeroPage ? 'text-[#0A0A0A]' : 'text-white'
+            className={`md:hidden font-sans text-[11px] tracking-[0.18em] uppercase focus:outline-none transition-colors px-3 py-1.5 border ${
+              mobileOpen
+                ? 'text-white border-white/40 bg-white/10'
+                : isDarkHeaderState
+                  ? 'text-[#0A0A0A] border-black/20'
+                  : 'text-white border-white/30'
             }`}
           >
             {mobileOpen ? 'Close' : 'Menu'}
@@ -113,43 +123,65 @@ export default function Navigation() {
         </div>
       </header>
 
-      {/* ─── Mobile full-screen overlay ───────────────────── */}
+      {/* ─── Mobile full-screen off-canvas overlay ────────── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-30 bg-[#F5F4F0] flex flex-col justify-between px-8 pt-28 pb-16"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[#0A0A0A] flex flex-col justify-between px-8 pt-32 pb-14"
           >
-            <nav className="flex flex-col gap-2">
+            {/* Links */}
+            <nav className="flex flex-col gap-3">
               {NAV_LINKS.map(({ href, label }, i) => {
                 const active = pathname === href || (href !== '/' && pathname?.startsWith(href));
                 return (
                   <motion.div
                     key={href}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.07 + 0.1, duration: 0.35 }}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 + 0.08, duration: 0.3 }}
                   >
                     <Link
                       href={href}
-                      className={`font-sans font-black text-5xl sm:text-6xl block py-2 leading-tight transition-colors ${
-                        active ? 'text-[#0A0A0A]' : 'text-[#0A0A0A]/30 hover:text-[#0A0A0A]/80'
+                      className={`font-sans font-black text-4xl sm:text-5xl flex items-center justify-between py-2 leading-tight transition-colors ${
+                        active
+                          ? 'text-white'
+                          : 'text-white/60 hover:text-white'
                       }`}
                     >
-                      {label}
+                      <span>{label}</span>
+                      {active && (
+                        <span className="font-sans text-xs tracking-[0.2em] uppercase text-white/50 border border-white/30 px-2 py-1">
+                          Current
+                        </span>
+                      )}
                     </Link>
                   </motion.div>
                 );
               })}
             </nav>
 
-            <div className="border-t border-black/10 pt-8 flex flex-col gap-1 font-sans text-xs text-[#8A8A8A]">
-              <p className="font-black text-[#0A0A0A] text-sm tracking-tight">She Says Cut</p>
-              <p>Directed by Maria Lückerath · Brussels, Belgium</p>
-            </div>
+            {/* Footer metadata band inside off-canvas menu */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.3 }}
+              className="border-t border-white/15 pt-6 flex flex-col gap-2 font-sans text-xs"
+            >
+              <div className="flex items-center justify-between text-white font-bold tracking-tight">
+                <span>She Says Cut Studio</span>
+                <span className="text-[10px] tracking-[0.18em] uppercase text-white/50">Brussels, BE</span>
+              </div>
+              <p className="text-white/60 text-xs leading-relaxed">
+                Directed by Maria Lückerath · Introspective narrative cinema & commissioned film
+              </p>
+              <p className="text-[10px] tracking-[0.16em] uppercase text-white/40 mt-1">
+                contact@shesayscut.com
+              </p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
