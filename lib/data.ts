@@ -244,7 +244,7 @@ export const STUDIO_INFO = {
   tagline: 'Independent boutique film production company',
   location: 'Brussels, Belgium',
   director: 'Maria Lückerath',
-  directorPortrait: UNSPLASH.portrait,
+  directorPortrait: '/media/maria_portrait.jpg',
   email: 'contact@shesayscut.com',
   heroImage: UNSPLASH.street,
   manifesto: [
